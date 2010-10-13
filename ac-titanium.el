@@ -40,7 +40,7 @@
 (require 'titanium)
 
 (defvar titanium-api
-  (sort '(
+  '(
     "Titanium"
     "Titanium.addEventListener()"
     "addEventListener()"
@@ -2007,7 +2007,7 @@
     "removeEventListener()"
     "Titanium.Yahoo.yql()"
     "yql()"
-    )))
+    ))
 
 (defvar ac-source-titanium
   '(
@@ -2016,18 +2016,19 @@
                 (lambda ()
                   ;;(message ac-prefix)
                   (let ((titanium-prefix (buffer-substring (point) (re-search-backward " "))))
-                    (if (string-match "Titanium\\.\\(.+\\)\\.\\(.+\\)\\.\\(.+\\)\\." titanium-prefix)
-                        (mapcar (function (lambda (c) (replace-regexp-in-string (match-string 0 titanium-prefix) "" c))) titanium-api)
-                      (if (string-match "Titanium\\.\\(.+\\)\\.\\(.+\\)\\." titanium-prefix)
-                          (mapcar (function (lambda (c) (replace-regexp-in-string (match-string 0 titanium-prefix) "" c))) titanium-api)
-                        (if (string-match "Titanium\\.\\(.+\\)\\." titanium-prefix)
-                            (mapcar (function (lambda (c) (replace-regexp-in-string (match-string 0 titanium-prefix) "" c))) titanium-api)
-                          (if (string-match "Titanium\\." titanium-prefix)
-                              (mapcar (function (lambda (c) (replace-regexp-in-string (match-string 0 titanium-prefix) "" c))) titanium-api)
-                            titanium-api
-                            )))))))))
-
-;;(setq titanium-prefix "Titanium.UI.Tab")
+                    (if (string-match "\\(Titanium\\.\\)" titanium-prefix)
+                        (if (string-match "\\(Titanium\\.\\)[^.]+$" titanium-prefix)
+                            (mapcar (function (lambda (c) (replace-regexp-in-string (match-string 1 titanium-prefix) "" c))) titanium-api)
+                          (if (string-match "\\(Titanium\\.[^.]+\\.\\)[^.]+$" titanium-prefix)
+                              (mapcar (function (lambda (c) (replace-regexp-in-string (match-string 1 titanium-prefix) "" c))) titanium-api)
+                            (if (string-match "\\(Titanium\\.[^.]+\\.[^.]+\\.\\)[^.]+$" titanium-prefix)
+                                (mapcar (function (lambda (c) (replace-regexp-in-string (match-string 1 titanium-prefix) "" c))) titanium-api)
+                              (if (string-match "\\(Titanium\\.[^.]+\\.[^.]+\\.[^.]+.\\)[^.]+$" titanium-prefix)
+                                  (mapcar (function (lambda (c) (replace-regexp-in-string (match-string 1 titanium-prefix) "" c))) titanium-api)
+                                titanium-api
+                                ))))
+                      titanium-api
+                      ))))))
 
 (provide 'ac-titanium)
 
