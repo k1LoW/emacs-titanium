@@ -146,7 +146,7 @@
   (setq titanium-root-path (titanium-find-root-path))
   (if (not titanium-root-path)
       nil
-    (titanium-set-regexp)))
+    t))
 
 (defun titanium-find-root-path ()
   "Find app directory"
