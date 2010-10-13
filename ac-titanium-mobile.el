@@ -1,4 +1,4 @@
-;;; ac-titanium.el --- Titanium Minor Mode auto-complete.el source
+;;; ac-titanium-mobile.el --- Titanium Mobile auto-complete.el source
 ;; -*- Mode: Emacs-Lisp -*-
 
 ;; Copyright (C) 2010 by 101000code/101000LAB
@@ -25,12 +25,12 @@
 ;; Put this file into load-path'ed directory, and byte compile it if
 ;; desired.  And put the following expression into your ~/.emacs.
 ;;
-;; (require 'ac-titanium)
+;; (require 'ac-titanium-mobile)
 ;; (add-hook 'js2-mode-hook
 ;;           (lambda ()
 ;;             (make-local-variable 'ac-sources)
 ;;             (setq ac-sources '(
-;;                                ac-source-titanium
+;;                                ac-source-titanium-mobile
 ;;                                ))))
 ;;
 
@@ -1290,7 +1290,7 @@
     "Titanium.Yahoo.yql()"
     ))
 
-(defvar ac-source-titanium
+(defvar ac-source-titanium-mobile
   '(
     (requires . 0)
     (candidates .
@@ -1311,6 +1311,6 @@
                       titanium-api
                       ))))))
 
-(provide 'ac-titanium)
+(provide 'ac-titanium-mobile)
 
 ;;; Code ends
