@@ -38,6 +38,7 @@
 
 ;;require
 (require 'titanium)
+(require 'auto-complete)
 
 (defvar titanium-api
   '(

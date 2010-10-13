@@ -89,7 +89,7 @@
 
 (define-minor-mode titanium
   "Titanium minor mode."
-  :lighter " Titanium"
+  :lighter " Ti"
   :group 'titanium
   (if titanium
       (progn
