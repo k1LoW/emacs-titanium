@@ -232,7 +232,7 @@
 (defun titanium-open-resources-dir ()
   "Open JavaScript directory."
   (interactive)
-  (titanium-open-dir "Resorces/" t))
+  (titanium-open-dir "Resources/" t))
 
 ;; mode provide
 (provide 'titanium)
