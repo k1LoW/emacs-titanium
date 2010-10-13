@@ -21,6 +21,19 @@
 ;; Author: k1LoW (Kenichirou Oyama), <k1lowxb [at] gmail [dot] com> <k1low [at] 101000lab [dot] org>
 ;; URL: http://code.101000lab.org
 
+;;; Install
+;; Put this file into load-path'ed directory, and byte compile it if
+;; desired.  And put the following expression into your ~/.emacs.
+;;
+;; (require 'ac-titanium)
+;; (add-hook 'js2-mode-hook
+;;           (lambda ()
+;;             (make-local-variable 'ac-sources)
+;;             (setq ac-sources '(
+;;                                ac-source-titanium
+;;                                ))))
+;;
+
 ;;; Code:
 
 ;;require
