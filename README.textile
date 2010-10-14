@@ -1,0 +1,8 @@
+h1. Titanium Minor Mode
+
+Minor Mode for editing Titanium code in Emacs
+
+h2. Screenshot
+
+!http://github.com/k1LoW/emacs-titanium/raw/master/documents/ss_titanium.png!
+!http://github.com/k1LoW/emacs-titanium/raw/master/documents/ss_ac-titanium-mobile.png!
