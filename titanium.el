@@ -60,7 +60,7 @@
 ;;    default = 5
 ;;  `titanium-mobile-sdk-path'
 ;;    Titanium Mobile SDK path
-;;    default = "/Library/ApplicationSupport/Titanium/mobilesdk/osx/1.4.1.1/"
+;;    default = "/Library/Application Support/Titanium/mobilesdk/osx/1.4.1.1/"
 
 ;;; Change Log
 ;; 0.0.2: Add function titanium-run-iphone.
@@ -93,7 +93,7 @@
   :type 'integer
   :group 'titanium)
 
-(defcustom titanium-mobile-sdk-path "/Library/Application\ Support/Titanium/mobilesdk/osx/1.4.1.1/"
+(defcustom titanium-mobile-sdk-path "/Library/Application Support/Titanium/mobilesdk/osx/1.4.1.1/"
   "Titanium Mobile SDK path"
   :type 'string
   :group 'titanium)
