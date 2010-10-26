@@ -48,6 +48,8 @@
 ;;    Open directory.
 ;;  `titanium-open-resources-dir'
 ;;    Open JavaScript directory.
+;;  `titanium-run-iphone'
+;;    Build and run iPhone Simulator.
 ;;
 ;;; Customizable Options:
 ;;
@@ -56,8 +58,13 @@
 ;;  `titanium-root-path-search-limit'
 ;;    Search limit
 ;;    default = 5
+;;  `titanium-mobile-sdk-path'
+;;    Titanium Mobile SDK path
+;;    default = "/Library/ApplicationSupport/Titanium/mobilesdk/osx/1.4.1.1/"
 
 ;;; Change Log
+;; 0.0.2: Add function titanium-run-iphone.
+;;      : Change key-map
 ;; 0.0.1: Initial commit
 
 ;;; TODO
@@ -68,6 +75,7 @@
 ;;require
 (require 'cl)
 (require 'anything)
+(require 'deferred)
 (require 'historyf)
 (require 'easy-mmode)
 
@@ -85,6 +93,10 @@
   :type 'integer
   :group 'titanium)
 
+(defcustom titanium-mobile-sdk-path "/Library/Application\ Support/Titanium/mobilesdk/osx/1.4.1.1/"
+  "Titanium Mobile SDK path"
+  :type 'string
+  :group 'titanium)
 ;;(global-set-key "\C-c\C-v" 'titanium)
 
 (define-minor-mode titanium
@@ -130,7 +142,7 @@
   (setq titanium-key-map
         (let ((map (make-sparse-keymap)))
           (define-key map "\C-cf" 'titanium-switch-to-function)
-          (define-key map "\C-cr" 'titanium-open-resources-dir)
+          (define-key map "\C-cl" 'titanium-open-resources-dir)
           map)))
 
 (defun titanium-get-current-line ()
@@ -233,6 +245,16 @@
   "Open JavaScript directory."
   (interactive)
   (titanium-open-dir "Resources/" t))
+
+(defun titanium-run-iphone ()
+  "Build and run iPhone Simulator."
+  (interactive)
+  (if (titanium-is-root-path)
+      (deferred:$
+        (deferred:process (concat titanium-mobile-sdk-path "iphone/builder.py") "run" titanium-root-path)
+        (deferred:nextc it
+          (lambda (x) (message x))))
+    (message "Can't set app path.")))
 
 ;; mode provide
 (provide 'titanium)
