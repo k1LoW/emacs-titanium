@@ -50,6 +50,8 @@
 ;;    Open JavaScript directory.
 ;;  `titanium-run-iphone'
 ;;    Build and run iPhone Simulator.
+;;  `titanium-run-ipad'
+;;    Build and run iPad Simulator.
 ;;
 ;;; Customizable Options:
 ;;
@@ -60,9 +62,11 @@
 ;;    default = 5
 ;;  `titanium-mobile-sdk-path'
 ;;    Titanium Mobile SDK path
-;;    default = "/Library/Application Support/Titanium/mobilesdk/osx/1.4.1.1/"
+;;    default = "/Library/Application Support/Titanium/mobilesdk/osx/1.4.2/"
 
 ;;; Change Log
+;; 0.0.3: Add function titanium-run-ipad.
+;;      : Update Titanium Mobile SDK version
 ;; 0.0.2: Add function titanium-run-iphone.
 ;;      : Change key-map
 ;; 0.0.1: Initial commit
@@ -93,7 +97,7 @@
   :type 'integer
   :group 'titanium)
 
-(defcustom titanium-mobile-sdk-path "/Library/Application Support/Titanium/mobilesdk/osx/1.4.1.1/"
+(defcustom titanium-mobile-sdk-path "/Library/Application Support/Titanium/mobilesdk/osx/1.4.2/"
   "Titanium Mobile SDK path"
   :type 'string
   :group 'titanium)
@@ -252,6 +256,16 @@
   (if (titanium-is-root-path)
       (deferred:$
         (deferred:process (concat titanium-mobile-sdk-path "iphone/builder.py") "run" titanium-root-path)
+        (deferred:nextc it
+          (lambda (x) (message x))))
+    (message "Can't set app path.")))
+
+(defun titanium-run-ipad ()
+  "Build and run iPad Simulator."
+  (interactive)
+  (if (titanium-is-root-path)
+      (deferred:$
+        (deferred:process (concat titanium-mobile-sdk-path "iphone/builder.py") "run" titanium-root-path "3.2" "0" "0" "ipad")
         (deferred:nextc it
           (lambda (x) (message x))))
     (message "Can't set app path.")))

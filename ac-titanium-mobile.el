@@ -2824,6 +2824,7 @@
     "Titanium.Yahoo.fireEvent()"
     "Titanium.Yahoo.removeEventListener()"
     "Titanium.Yahoo.yql()"
+    "currentWindow"
     ))
 
 (defvar ac-source-titanium-mobile
