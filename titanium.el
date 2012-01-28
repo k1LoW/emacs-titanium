@@ -1,5 +1,4 @@
-;;;titanium.el ---  Titanium Minor Mode
-;; -*- Mode: Emacs-Lisp -*-
+;;; titanium.el ---  Titanium Minor Mode
 
 ;; Copyright (C) 2010 by 101000code/101000LAB
 
